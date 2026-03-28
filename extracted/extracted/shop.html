@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyperChess - Shop</title>
+<script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-pieces" id="bgPieces" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-logo">♟ HyperChess</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#shop-grid">Themes</a></li>
+  </ul>
+  <a href="game.html" class="nav-cta">Play local</a>
+</nav>
+
+<section class="shop-hero">
+  <div class="hero-badge">Cosmetic Shop</div>
+  <h1 class="section-title">Customize your board</h1>
+  <p class="hero-sub">Earn coins by finishing matches, unlock new board looks, and equip your favorite theme instantly.</p>
+  <div class="shop-wallet">
+    <span class="shop-wallet-label">Coins</span>
+    <strong id="shop-coins">0</strong>
+  </div>
+</section>
+
+<section class="features" id="shop-grid">
+  <div class="features-grid" id="shop-items"></div>
+</section>
+
+<script type="module" src="./shop.js"></script>
+</body>
+</html>

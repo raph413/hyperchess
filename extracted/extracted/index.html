@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyperChess</title>
+<script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-pieces" id="bgPieces" aria-hidden="true"></div>
+
+<nav>
+  <div class="nav-logo">♟ HyperChess</div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#modes">Modes</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="#howto">How to play</a></li>
+  </ul>
+  <a href="online.html" class="nav-cta">🌐 Play online</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">⚡ No turns. Pure chaos.</div>
+  <h1 class="hero-title"><span class="w1">Hyper</span><span class="w2">Chess</span></h1>
+  <p class="hero-sub">Both players move <strong>at the same time</strong>. Every piece has its own <strong>3-second cooldown</strong>. First to capture the King wins.</p>
+  <div class="hero-btns">
+    <a href="online.html" class="btn-primary">🌐 Play online</a>
+    <a href="game.html" class="btn-secondary">Play local</a>
+  </div>
+  <div class="hero-board"><div class="mini-board" id="miniBoard"></div></div>
+</section>
+
+<section class="features modes-section" id="modes">
+  <div class="section-label">Pick your chaos</div>
+  <h2 class="section-title">Two ways to play</h2>
+  <div class="features-grid">
+    <div class="feat-card c1 visible">
+      <span class="feat-icon">🌐</span>
+      <div class="feat-title">Online room</div>
+      <p class="feat-desc">Create a private room, share the code, and play with synchronized real-time state.</p>
+      <a href="online.html" class="mode-link">Open online mode</a>
+    </div>
+    <div class="feat-card c4 visible">
+      <span class="feat-icon">🛋</span>
+      <div class="feat-title">Local same-screen</div>
+      <p class="feat-desc">Keep the original CrazyGames-friendly couch mode for two players on one keyboard/mouse setup.</p>
+      <a href="game.html" class="mode-link">Open local mode</a>
+    </div>
+    <div class="feat-card c2 visible">
+      <span class="feat-icon">🛒</span>
+      <div class="feat-title">Cosmetic shop</div>
+      <p class="feat-desc">Spend coins on board themes and give your matches a fresh look.</p>
+      <a href="shop.html" class="mode-link">Open shop</a>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="section-label">Why it slaps</div>
+  <h2 class="section-title">Chess, but make it <span style="color:var(--yellow)">unhinged</span></h2>
+  <div class="features-grid">
+    <div class="feat-card c1"><span class="feat-icon">⚡</span><div class="feat-title">Simultaneous play</div><p class="feat-desc">No waiting. Both players move freely at the same time. Blink and you'll miss it.</p></div>
+    <div class="feat-card c2"><span class="feat-icon">⏱</span><div class="feat-title">Per-piece cooldown</div><p class="feat-desc">Each piece has its own 3-second cooldown. Move another piece freely while it cools - fully independent.</p></div>
+    <div class="feat-card c3"><span class="feat-icon">👑</span><div class="feat-title">Capture the King</div><p class="feat-desc">No checkmate. Hunt down the enemy King and capture it to win instantly.</p></div>
+    <div class="feat-card c4"><span class="feat-icon">♟</span><div class="feat-title">Full chess rules</div><p class="feat-desc">All pieces move exactly like real chess. Pawns promote. Knights jump. Queens dominate.</p></div>
+  </div>
+</section>
+
+<section class="howto" id="howto">
+  <div class="howto-inner">
+    <div class="section-label">Quick guide</div>
+    <h2 class="section-title">How to play</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-text"><h3>Sit side by side</h3><p>White plays from the bottom (warm squares), Black from the top (blue squares). Share the same screen.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text"><h3>Click a piece, then a square</h3><p>Click any of your pieces to select it - valid moves highlight green. Click a destination to move.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text"><h3>Respect the cooldown</h3><p>After moving, that piece is locked for 3 seconds. Move any other piece freely - each piece is independent.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text"><h3>Capture the King to win</h3><p>No checkmate. Hunt down the enemy King and capture it directly. Game ends immediately.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-box">
+    <span class="cta-pieces">♔ ♛ ♜ ♝ ♞ ♟</span>
+    <h2>Ready for chaos?</h2>
+    <p>Grab a friend, send a room code or share the same screen, and may the fastest player win.</p>
+    <div class="hero-btns">
+      <a href="online.html" class="btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;">🌐 Start online</a>
+      <a href="game.html" class="btn-secondary">Play local</a>
+    </div>
+  </div>
+</section>
+
+<footer>Made with <span>♥</span> and chaos - HyperChess &copy; 2026</footer>
+
+<script>
+const PA = ['♔','♕','♖','♗','♘','♙','♚','♛','♜','♝','♞','♟'];
+const bgEl = document.getElementById('bgPieces');
+for (let i = 0; i < 28; i++) {
+  const el = document.createElement('div');
+  el.className = 'bg-piece';
+  el.textContent = PA[Math.floor(Math.random() * PA.length)];
+  el.style.cssText = `left:${Math.random()*100}%;font-size:${2+Math.random()*3}rem;animation-duration:${12+Math.random()*20}s;animation-delay:${-Math.random()*20}s;`;
+  bgEl.appendChild(el);
+}
+
+const INIT = [
+  ['bR','bN','bB','bQ','bK','bB','bN','bR'],
+  ['bP','bP','bP','bP','bP','bP','bP','bP'],
+  [null,null,null,null,null,null,null,null],
+  [null,null,null,null,null,null,null,null],
+  [null,null,null,null,null,null,null,null],
+  [null,null,null,null,null,null,null,null],
+  ['wP','wP','wP','wP','wP','wP','wP','wP'],
+  ['wR','wN','wB','wQ','wK','wB','wN','wR'],
+];
+const GL = {wK:'♔',wQ:'♕',wR:'♖',wB:'♗',wN:'♘',wP:'♙',bK:'♚',bQ:'♛',bR:'♜',bB:'♝',bN:'♞',bP:'♟'};
+const mb = document.getElementById('miniBoard');
+for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++) {
+  const sq = document.createElement('div');
+  const l = (r + c) % 2 === 0;
+  sq.className = 'mini-sq ' + (r < 4 ? (l ? 'bl' : 'bd') : (l ? 'l' : 'd'));
+  const p = INIT[r][c];
+  if (p) {
+    const s = document.createElement('span');
+    s.textContent = GL[p];
+    sq.appendChild(s);
+  }
+  mb.appendChild(sq);
+}
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.feat-card, .step').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
