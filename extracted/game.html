@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyperChess - Play</title>
+<script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+<div id="game-layout">
+  <div id="game-topbar">
+    <div class="logo">♟ HyperChess</div>
+    <div id="game-scores">
+      <div class="gscore">
+        <span class="gscore-label" style="color:#7FBBF0;">White captured</span>
+        <span class="gscore-val" id="sw">0</span>
+      </div>
+      <span style="color:rgba(255,255,255,0.3);font-size:13px;">vs</span>
+      <div class="gscore">
+        <span class="gscore-label" style="color:#F09595;">Black captured</span>
+        <span class="gscore-val" id="sb">0</span>
+      </div>
+    </div>
+    <a href="shop.html" class="topbar-link" aria-label="Open shop">Shop</a>
+    <a href="index.html" id="close-btn" aria-label="Back to home">✕ Back to home</a>
+  </div>
+
+  <div id="game-body">
+    <div class="side-panel">
+      <div class="plabel" style="color:#7FBBF0;">White</div>
+      <div class="pdesc">Bottom player. Each piece has its own 3s cooldown - move others freely.</div>
+      <div class="barwrap"><div class="barfill" id="bw" style="background:#378ADD;"></div></div>
+    </div>
+
+    <div id="game-col">
+      <div id="board-wrap">
+        <div id="board"></div>
+        <div id="win-screen">
+          <div id="win-box">
+            <div id="win-title"></div>
+            <div id="win-sub"></div>
+            <button id="play-again-btn" type="button">Play again</button>
+          </div>
+        </div>
+      </div>
+      <div id="glog"></div>
+    </div>
+
+    <div class="side-panel">
+      <div class="plabel" style="color:#F09595;">Black</div>
+      <div class="pdesc">Top player. Both players move simultaneously - no turns.</div>
+      <div class="barwrap"><div class="barfill" id="bb" style="background:#D85A30;"></div></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { crazyLoadingStart, crazyLoadingStop, initCrazyGamesSDK, preventCrazyPageScroll } from './crazygames.js';
+import { buildBoard, gameReset, paint, startGame } from './chess.js';
+
+const playAgainButton = document.getElementById('play-again-btn');
+let resizeFrame = null;
+
+playAgainButton.addEventListener('click', gameReset);
+preventCrazyPageScroll();
+
+requestAnimationFrame(async () => {
+  await initCrazyGamesSDK();
+  await crazyLoadingStart();
+  startGame();
+  await crazyLoadingStop();
+});
+
+window.addEventListener('resize', () => {
+  if (resizeFrame !== null) {
+    cancelAnimationFrame(resizeFrame);
+  }
+
+  resizeFrame = requestAnimationFrame(() => {
+    buildBoard();
+    paint();
+    resizeFrame = null;
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyperChess - Online</title>
+<script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page online-page">
+
+<div id="online-shell">
+  <div id="game-topbar">
+    <div class="logo">HyperChess Online</div>
+    <div id="game-scores">
+      <div class="gscore">
+        <span class="gscore-label" style="color:#7FBBF0;">White captured</span>
+        <span class="gscore-val" id="sw">0</span>
+      </div>
+      <span style="color:rgba(255,255,255,0.3);font-size:13px;">vs</span>
+      <div class="gscore">
+        <span class="gscore-label" style="color:#F09595;">Black captured</span>
+        <span class="gscore-val" id="sb">0</span>
+      </div>
+    </div>
+    <a href="index.html" id="close-btn">Back to home</a>
+  </div>
+
+  <section id="online-lobby" class="online-lobby">
+    <div class="online-card">
+      <div class="section-label">Online Mode</div>
+      <h1 class="section-title">Play private or ranked online</h1>
+      <p class="online-copy">Create a private room to play with a friend, or use Quick match for ranked matchmaking. The backend keeps the board authoritative so both clients stay in sync.</p>
+
+      <div class="online-actions">
+        <div class="join-inline">
+          <input id="nickname-input" type="text" maxlength="18" placeholder="Nickname" autocomplete="nickname">
+          <button id="create-room-btn" class="btn-primary" type="button">Create room</button>
+        </div>
+        <div class="join-inline">
+          <button id="quick-match-btn" class="btn-primary" type="button">Quick match</button>
+          <button id="cancel-match-btn" class="ghost-btn hidden" type="button">Cancel search</button>
+        </div>
+        <div class="join-inline">
+          <input id="room-input" type="text" maxlength="6" placeholder="ROOM" autocomplete="off">
+          <button id="join-room-btn" class="btn-secondary" type="button">Join</button>
+        </div>
+      </div>
+
+      <div class="online-copy">
+        Quick match: ranked, Elo enabled, coins rewarded at the end.
+        Private room: unranked, room code only, no Elo change.
+      </div>
+
+      <div id="room-panel" class="room-panel hidden">
+        <div class="room-line">
+          <span class="room-label">Your Elo</span>
+          <div class="room-code-wrap">
+            <strong id="player-elo">1000</strong>
+          </div>
+        </div>
+        <div class="room-line">
+          <span class="room-label">Room code</span>
+          <div class="room-code-wrap">
+            <strong id="room-code">------</strong>
+            <button id="copy-room-btn" class="ghost-btn" type="button">Copy</button>
+          </div>
+        </div>
+        <p id="room-link" class="room-link"></p>
+      </div>
+
+      <p id="lobby-status" class="lobby-status">Connecting...</p>
+    </div>
+  </section>
+
+  <section id="online-game" class="online-game hidden">
+    <div id="game-body">
+      <div class="side-panel">
+        <div class="plabel" id="player-one-label" style="color:#7FBBF0;">White</div>
+        <div class="pdesc" id="player-one-status">Waiting for player...</div>
+        <div class="barwrap"><div class="barfill" id="bw" style="background:#378ADD;"></div></div>
+      </div>
+
+      <div id="game-col">
+        <div class="online-meta">
+          <div class="online-pill" id="connection-pill">Offline</div>
+          <div class="online-pill" id="turn-pill">Waiting...</div>
+          <div class="online-pill" id="room-pill">Room ------</div>
+          <div class="online-pill" id="mode-pill">Unranked</div>
+        </div>
+        <div id="waiting-banner" class="waiting-banner">Waiting for the second player to join this room.</div>
+        <div id="board-wrap">
+          <div id="board"></div>
+          <div id="win-screen">
+            <div id="win-box">
+              <div id="win-title"></div>
+              <div id="win-sub"></div>
+              <button id="back-lobby-btn" type="button">Back to lobby</button>
+            </div>
+          </div>
+        </div>
+        <div id="glog"></div>
+      </div>
+
+      <div class="side-panel">
+        <div class="plabel" id="player-two-label" style="color:#F09595;">Black</div>
+        <div class="pdesc" id="player-two-status">Waiting for player...</div>
+        <div class="barwrap"><div class="barfill" id="bb" style="background:#D85A30;"></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script type="module" src="./online.js"></script>
+</body>
+</html>
