@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: hyperchess-online
-    env: node
-    plan: free
-    rootDir: .
-    buildCommand: ""
-    startCommand: npm start
-    autoDeploy: true
